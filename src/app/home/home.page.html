@@ -1,20 +1,52 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Blank
+      Video Recording
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" class="ion-padding">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
+      <ion-title size="large">Video Recording</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+  <div id="container" [hidden]="isRecording" *ngIf="videos.length === 0">
+    <strong>No Video Available</strong>
+    <p>Add new video via Floating action button!</p>
   </div>
+
+  <ion-list [hidden]="isRecording">
+    <ion-item
+      *ngFor="let video of videos; let index = index;"
+      (click)="play(video)"
+      tappable
+    >
+      <Video width="120" height="120" controls>
+        <source [src]="video" type="video/mp4">
+      </Video>
+    </ion-item>
+  </ion-list>
+
+  <Video
+    class="video"
+    #video
+    autoplay
+    playsinline
+    muted
+    [hidden]="!isRecording"
+  ></Video>
+
+  <ion-fab
+    vertical="bottom"
+    horizontal="center"
+    slot="fixed"
+    class="ion-margin-bottom"
+  >
+    <ion-fab-button (click)="isRecording ? stop() : record()">
+      <ion-icon [name]="isRecording ? 'stop-outline' : 'videocam-outline'"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>

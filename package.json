@@ -9,7 +9,8 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "build-android": "ionic build && npx cap copy android && npx cap open android && npx cap sync android"
   },
   "private": true,
   "dependencies": {
@@ -19,12 +20,15 @@
     "@angular/platform-browser": "^14.0.0",
     "@angular/platform-browser-dynamic": "^14.0.0",
     "@angular/router": "^14.0.0",
+    "@capacitor/android": "4.0.1",
     "@capacitor/app": "4.0.1",
     "@capacitor/core": "4.0.1",
     "@capacitor/haptics": "4.0.1",
     "@capacitor/keyboard": "4.0.1",
     "@capacitor/status-bar": "4.0.1",
     "@ionic/angular": "^6.1.9",
+    "capacitor-video-player": "^3.4.2",
+    "hls.js": "^1.2.0",
     "rxjs": "~6.6.0",
     "tslib": "^2.2.0",
     "zone.js": "~0.11.4"
@@ -41,6 +45,7 @@
     "@angular/language-service": "^14.0.0",
     "@capacitor/cli": "4.0.1",
     "@ionic/angular-toolkit": "^6.0.0",
+    "@types/dom-mediacapture-record": "~1.0.11",
     "@types/jasmine": "~3.6.0",
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "^12.11.1",
