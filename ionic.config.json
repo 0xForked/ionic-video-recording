@@ -1,0 +1,7 @@
+{
+  "name": "video-recording",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
